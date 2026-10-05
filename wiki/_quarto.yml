@@ -1,0 +1,40 @@
+# The knowledge-base site: publishes this repo's llm wiki (maintained
+# markdown + the claim ledger + the experiment registry) to GitHub Pages.
+# Scoped inside wiki/ deliberately -- the repo root is a Next.js app.
+# Neutral identity per the tokens-neutral-sibling ADR (Level-3 property).
+# The sidebar is auto-generated from the wiki's structure; replace with a
+# curated sidebar as your knowledge base matures (see the IRTc instance).
+project:
+  type: website
+  output-dir: _site
+
+website:
+  title: "Knowledge Base"
+  search: true
+  page-navigation: true
+  sidebar:
+    style: docked
+    contents: auto
+
+# Accessible names for Quarto's icon-only search controls. The submit
+# button's title also becomes the search field's label, so the stock
+# "Submit" made a screen reader call the text field "Submit"
+# (wi-20260905-at-unnamed-search-buttons). a11y-fixups.html mirrors these
+# titles, and the colour toggle's, into aria-label.
+language:
+  search-submit-button-title: "Search"
+  search-clear-button-title: "Clear search"
+
+format:
+  html:
+    theme:
+      light: assets/neutral-light.scss
+      dark: assets/neutral-dark.scss
+    toc: true
+    # External links open in the same tab: the reader keeps their back button,
+    # and there is no new-window change to disclose (wi-20260905-at-external-link-newwindow).
+    link-external-newwindow: false
+    # Accessibility layer for Quarto's generated chrome -- see the comments in
+    # each file (wi-20260905-at-skip-link, wi-20260905-at-landmark-roles).
+    include-before-body: assets/a11y-skip-link.html
+    include-after-body: assets/a11y-fixups.html

@@ -1,0 +1,43 @@
+name: CI
+#
+# Runs typecheck + lint on every push + PR.
+#
+# **Skipped on the template repo itself** (`dataimago/dissertation-app-template`).
+# The template ships placeholders ({{user.name}}, etc.) that don't pass
+# `tsc --noEmit` or `eslint`. CI runs in user-derived repos once
+# `/api/generate` has substituted real values into the placeholders.
+#
+# Uses `npm install` (not `npm ci`) and no npm cache so it's green out of the
+# box: a freshly-provisioned repo has no committed `package-lock.json` yet, and
+# `cache: 'npm'` / `npm ci` both hard-fail without one (the first real E2E run
+# failed here). Node 24 — Node 20 is deprecated on GitHub Actions runners.
+#
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+jobs:
+  typecheck:
+    if: github.repository != 'dataimago/dissertation-app-template'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          submodules: recursive
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - run: npm install
+      - run: npm run typecheck
+      - run: npm run lint
+      # Ingestion completeness: every file under raw/ is cited by a wiki page,
+      # listed in raw/MANIFEST.md, or ignored by raw/.ingestignore. Reads file
+      # names only. A REMINDER, not a gate: documents you attached at
+      # dissertation.ai sit in raw/ until your first /ingest, and that must not
+      # turn your first commit red. Un-ingested files show as a warning.
+      - name: Ingestion completeness (reminder)
+        run: npm run ingest:check || echo "::warning title=Run /ingest::Some files in raw/ are not in your knowledge base yet. Run /ingest (see KNOWLEDGE.md)."
