@@ -1,4 +1,4 @@
-# {{thesis.workingTitle}}
+# The Impact of Graph Digitization Error on Effect Size Estimation and Meta-Analytic Conclusions in Single-Case Experimental Design Research
 
 > Your AI-native dissertation environment, set up for you by [dissertation.ai](https://dissertation-ai.dataimago.ai).
 
@@ -9,8 +9,8 @@ This repository is your dissertation's home: where you write your chapters, wher
 **1. Get a copy on your computer.**
 
 ```sh
-git clone --recursive https://github.com/{{user.githubUsername}}/{{metadata.name}}.git
-cd {{metadata.name}}
+git clone --recursive https://github.com/sarahhammamidr/sarahhammamidr-dissertation.git
+cd sarahhammamidr-dissertation
 ```
 
 The `--recursive` flag also pulls in the linked R package that holds your chapters. *If your dissertation has no R package, you can clone normally (without `--recursive`) — your chapters live right here in `thesis/` instead (see step 3).*

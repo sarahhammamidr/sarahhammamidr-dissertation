@@ -1,4 +1,4 @@
-# {{metadata.name}} — AI agent operating manual
+# sarahhammamidr-dissertation — AI agent operating manual
 
 > Claude Code reads this file; every other AI tool reads `AGENTS.md`. The manual itself is `AGENTS.md` (imported below), so there is one set of rules for every tool. Put Claude-only notes here; put everything else in `AGENTS.md`.
 

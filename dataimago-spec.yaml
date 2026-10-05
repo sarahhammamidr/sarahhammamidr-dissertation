@@ -1,126 +1,195 @@
-# dataimago-spec.yaml — the contract between dissertation.ai and dataimago::ai().
-#
-# This file is the COMPLETE representation of your dissertation. Edit it any time
-# to refine your dissertation's configuration; the `generate.yml` CI workflow
-# re-runs `dataimago::ai()` on every push to this file.
-#
-# Full schema: dissertation-ai/docs/iteration-3-d-2-design.md §3
-# Down-the-road logistical fields (IRB, funding, embargo, deadlines, co-authorship):
-#   per the design principle "spec accommodates, interview asks the critical subset"
-#   these fields are optional and default to empty. Fill them in over time.
-#
-# THIS FILE IS A PLACEHOLDER. It gets overwritten at provision time with your
-# actual answers from the dissertation.ai onboarding interview.
-
 apiVersion: dataimago.ai/v1alpha1
 kind: ProjectSpec
-
 metadata:
-  name: PLACEHOLDER-dissertation
+  name: sarahhammamidr-dissertation
   vertical: dissertation
   generatedBy: dissertation-ai
-  generatedAt: "2026-01-01T00:00:00Z"
+  generatedAt: "2026-10-05T20:02:54.094Z"
   specVersion: 1
-
 user:
-  name: "Your Name"
-  email: "you@institution.edu"
-  githubUsername: "your-github-username"
-
+  name: Sarah Hammami
+  email: shammami2@huskers.unl.edu
+  githubUsername: sarahhammamidr
 project:
-  title: "Your dissertation working title"
-  description: "One-paragraph description of your dissertation."
+  title: >-
+    The Impact of Graph Digitization Error on Effect Size Estimation and Meta-Analytic Conclusions
+    in Single-Case Experimental Design Research
+  description: >-
+    My dissertation grew out of my broader interest in validity, measurement, and methodological
+    decision-making, particularly in contexts where seemingly small analytic or data-processing
+    choices can affect substantive conclusions.  Through my work with single-case experimental
+    design research, I became interested in a practical but underexamined step in the research
+    process: extracting numerical data from published graphs when the original data are
+    unavailable. 
 
+
+    Digitization tools such as WebPlotDigitizer make it possible to recover data from figures, and
+    those recovered values may then be used to calculate effect sizes or contribute to
+    meta-analyses.
 source:
-  case: extension                # 'extension' | 'retrofit' | 'no-r'
+  case: retrofit
   rPackage:
-    name: PLACEHOLDER-thesis-rpkg
-    submoduleUrl: "https://github.com/your-github-username/PLACEHOLDER-thesis-rpkg"
-    submodulePath: "packages/r-packages/PLACEHOLDER-thesis-rpkg"
-    quartoRoot: "ui/www"
-
+    name: sarahh-dissertation-rpkg
+    submoduleUrl: https://github.com/sarahhammamidr/sarahh-dissertation-rpkg
+    submodulePath: packages/r-packages/sarahh-dissertation-rpkg
+    quartoRoot: ui/www
 vertical:
   dissertation:
     institution:
-      name: "Your University"
-      degreeProgram: "Ph.D. Your Program"
+      name: University of Nebraska–Lincoln
+      degreeProgram: Ph.D. in Quantitative, Qualitative, and Psychometric Methods (QQPM)
       department: ""
       expectedDefenseYear: null
-      # D.2.1.h down-the-road fields (optional; fill in over time):
       submissionDeadline: ""
       archiveUrl: ""
       administratorContact:
         name: ""
         email: ""
         role: ""
-
     advisors:
       chair:
-        name: "Dr. Your Chair"
-      committee: []
-
+        name: James Bovaird
+      committee:
+        - name: Matthew Fritz
+        - name: Jolene Smyth
+        - name: Edward Daly
     timeline:
       proposalDate: ""
       defenseDate: ""
       submissionDate: ""
-
     thesis:
-      workingTitle: "Your dissertation working title"
+      workingTitle: >-
+        The Impact of Graph Digitization Error on Effect Size Estimation and Meta-Analytic
+        Conclusions in Single-Case Experimental Design Research
       workingSubtitle: ""
-      researchQuestion: "What is the central question your dissertation answers?"
-      background: "What brought you to this topic?"
-      contribution: "What is the novel contribution?"
+      researchQuestion: >-
+        Primary question: Under what conditions does graph digitization error meaningfully affect
+        effect size estimates and substantive conclusions in single-case experimental design
+        research?
+
+
+        Secondary question: How does digitization error propagate from extracted data points to
+        study-level effect estimates and, ultimately, to meta-analytic conclusions?
+      background: >-
+        My dissertation grew out of my broader interest in validity, measurement, and methodological
+        decision-making, particularly in contexts where seemingly small analytic or data-processing
+        choices can affect substantive conclusions. Through my work with single-case experimental
+        design research, I became interested in a practical but underexamined step in the research
+        process: extracting numerical data from published graphs when the original data are
+        unavailable.
+
+
+        Digitization tools such as WebPlotDigitizer make it possible to recover data from figures,
+        and those recovered values may then be used to calculate effect sizes or contribute to
+        meta-analyses. However, digitization is not perfectly error-free. The central concern
+        motivating this dissertation is therefore not simply whether digitization error exists, but
+        when that error is large enough to matter for statistical estimates and research
+        conclusions. The project brings together my interests in simulation, measurement error,
+        research synthesis, and the validity of methodological recommendations.
+      contribution: >-
+        This dissertation examines digitization error as a source of uncertainty in single-case
+        experimental design research rather than treating extracted graph data as if they were
+        observed without error. Its primary methodological contribution is to evaluate how
+        digitization error propagates into effect size estimates and meta-analytic conclusions under
+        different conditions. It also has a practical contribution: identifying circumstances in
+        which graph digitization is sufficiently accurate for research synthesis and circumstances
+        in which digitization error may meaningfully alter conclusions. More broadly, the study
+        contributes to discussions of validity and reproducibility in research that relies on data
+        reconstructed from published figures.
       chapters:
-        - { id: introduction, title: "Introduction" }
-        - { id: literature, title: "Literature Review" }
-        - { id: methodology, title: "Methodology" }
-        - { id: results, title: "Results" }
-        - { id: discussion, title: "Discussion" }
-        - { id: conclusion, title: "Conclusion" }
+        - id: introduction
+          title: Introduction
+        - id: literature-review
+          title: "Literature Review "
+        - id: methodology
+          title: Methodology
+        - id: results
+          title: Results
+        - id: discussion
+          title: Discussion
       methodology:
-        approach: computational      # quantitative | qualitative | mixed-methods | computational
-        summary: "Brief description of your methodology."
+        approach: quantitative
+        summary: >-
+          The dissertation will primarily use Monte Carlo simulation to study the consequences of
+          graph-digitization error in single-case experimental design data. Simulated SCED data will
+          be generated under known conditions, plotted, and then digitized so that recovered values
+          can be compared with the true underlying values. The study will quantify digitization
+          error and examine how that error affects effect size estimates and downstream
+          meta-analytic conclusions.
+
+
+          An initial validation stage will evaluate the digitization process and help determine
+          realistic error characteristics. Depending on the validation results, an empirical
+          component involving human digitizers may also be incorporated so that the simulation
+          reflects observed digitization behavior. The simulation design and specific factors are
+          still being refined.
       bibliography:
         file: references.bib
-        citationStyle: apa-7         # apa-7 | chicago | mla | harvard | custom
+        citationStyle: apa-7
       classFile:
-        type: shipped                # shipped | vendored | generated
+        type: generated
         path: thesis.cls
-        guidelinesDocuments: []
-      # D.2.1.h down-the-road fields:
+        guidelinesDocuments:
+          - filename: Format _ Graduate Studies _ Nebraska.pdf
+            path: raw/thesis-formatting/Format _ Graduate Studies _ Nebraska.pdf
+            title: Format
+            description: >-
+              A consistent appearance is important; all pages in your dissertation should follow a
+              similar format for page numbering, margins, and line spacing.
+
+
+              On this page, you'll find sample pages, global formatting, and specific instructions
+              for each section: front matter, body matter, and back matter.
+            sourceUrl: >-
+              https://github.com/sarahhammamidr/sarahhammamidr-dissertation/blob/main/raw/thesis-formatting/Format
+              _ Graduate Studies _ Nebraska.pdf
       embargo:
-        type: none                   # none | one-year | two-year | custom
+        type: none
         durationMonths: 0
         reason: ""
       coauthors: []
-
+      writingStyle:
+        mode: shipped
+        path: writing/STYLE.md
+      manuscript:
+        status: in-progress
+        lockedAt: ""
+        files: []
     context:
       researchDocuments: []
       advisorWritings: []
       styleExemplars: []
       background: []
-      additionalNotes: ""
-
-    rEcosystem: []                   # tidyverse | data-table | collapse | base | stan | tidymodels | shiny | targets
-
-    # D.2.1.h down-the-road sections:
+      additionalNotes: >-
+        This dissertation is still in an early stage and several design decisions may change as the
+        validation and simulation work develops. My target is to complete the dissertation by May
+        2027. I want AI assistance to support methodological reasoning, organization, reproducible
+        workflows, literature synthesis, and drafting, while preserving my own scholarly judgment
+        and allowing the dissertation structure and simulation design to evolve over time.
+    rEcosystem: []
     compliance:
       irb:
-        status: not-required         # pending | approved | exempt | not-required
+        status: not-required
         number: ""
         expirationDate: ""
         link: ""
       dua: []
     funding: []
-
+    graphics:
+      engine: unspecified
 features:
   quartoBuild: true
   thesisPdf: true
   mcpTools: true
   aiContext: true
   apiScaffolding: true
-
 generator:
   rpkgVersion: ">=0.5.0"
   designVersion: ">=2.0.0"
-  outputDir: "."
+  outputDir: .
+  staticExport: full
+aiAgent:
+  skillBundle: true
+  skillMode: merge-seeded
+  includeWikiResources: true
+  includePrototypeFunctions: false
