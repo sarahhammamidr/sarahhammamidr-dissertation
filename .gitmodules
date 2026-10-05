@@ -1,0 +1,3 @@
+[submodule "packages/r-packages/sarahh-dissertation-rpkg"]
+	path = packages/r-packages/sarahh-dissertation-rpkg
+	url = https://github.com/sarahhammamidr/sarahh-dissertation-rpkg.git
